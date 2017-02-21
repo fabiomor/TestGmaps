@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="pref_connectionType"
+        android:title="@string/pref_connectionType"
+        android:dialogTitle="@string/pref_connectionType"
+        android:entries="@array/pref_connectionTypes_entries"
+        android:entryValues="@array/pref_connectionTypes_values"
+        android:defaultValue="@string/pref_connectionTypes_default"
+        android:summary="@string/pref_connectionTypes_default">
+    </ListPreference>
+
+    <EditTextPreference
+        android:key="pref_serverHostAddress"
+        android:title="@string/pref_serverHostAddress"
+        android:dialogTitle="@string/pref_serverHostAddress"
+        android:summary="@string/pref_serverHostAddress_default"
+        android:defaultValue="@string/pref_serverHostAddress_default">
+    </EditTextPreference>
+
+    <EditTextPreference
+        android:key="pref_serverHostPort"
+        android:title="@string/pref_serverHostPort"
+        android:dialogTitle="@string/pref_serverHostPort"
+        android:summary="@string/pref_serverHostPort_default"
+        android:defaultValue="@string/pref_serverHostPort_default"
+        android:digits="0123456789">
+    </EditTextPreference>
+
+    <EditTextPreference
+        android:key="pref_username"
+        android:title="@string/pref_username"
+        android:dialogTitle="@string/pref_username"
+        android:summary="@string/pref_username_default"
+        android:defaultValue="@string/pref_username_default">
+    </EditTextPreference>
+
+    <EditTextPreference
+        android:key="pref_password"
+        android:title="@string/pref_password"
+        android:dialogTitle="@string/pref_password"
+        android:password="true"
+        android:summary="@string/pref_password_default"
+        android:defaultValue="@string/pref_password_default">
+    </EditTextPreference>
+
+    <EditTextPreference
+        android:key="pref_zoomLevel"
+        android:title="@string/pref_zoomLevel"
+        android:dialogTitle="@string/pref_zoomLevel"
+        android:summary="@string/pref_zoomLevel_default"
+        android:defaultValue="@string/pref_zoomLevel_default">
+    </EditTextPreference>
+
+</PreferenceScreen>
