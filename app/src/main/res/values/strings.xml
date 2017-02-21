@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestGmaps</string>
+    <string name="app_name">GeoTag</string>
     <string name="title_activity_maps">Map</string>
     <string name="button_text">Place Marker</string>
     <string name="action_settings">Settings</string>

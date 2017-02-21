@@ -1,6 +1,4 @@
-package com.fabio.testing.testgmaps;
-
-import android.content.SharedPreferences;
+package com.fabio.gis.geotag;
 
 
 public class Settings {

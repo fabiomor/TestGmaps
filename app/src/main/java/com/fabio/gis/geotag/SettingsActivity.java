@@ -1,4 +1,4 @@
-package com.fabio.testing.testgmaps;
+package com.fabio.gis.geotag;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
-import java.util.Arrays;
+import com.fabio.gis.geotag.R;
+
 import java.util.Map;
 
 

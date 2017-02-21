@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        tools:context="com.fabio.testing.testgmaps.MapsFragment">
+        tools:context="com.fabio.gis.geotag.com.fabio.gis.testgmaps.MapsFragment">
     </fragment>
 
 </LinearLayout>

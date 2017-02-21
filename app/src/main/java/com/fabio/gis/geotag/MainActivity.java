@@ -1,4 +1,4 @@
-package com.fabio.testing.testgmaps;
+package com.fabio.gis.geotag;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.gms.maps.SupportMapFragment;
+import com.fabio.gis.geotag.R;
 import com.google.android.gms.maps.model.LatLng;
 
 

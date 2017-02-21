@@ -1,4 +1,4 @@
-package com.fabio.testing.testgmaps;
+package com.fabio.gis.geotag;
 
 
 public interface Constants {
