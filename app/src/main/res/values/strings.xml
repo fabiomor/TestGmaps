@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">TestGmaps</string>
     <string name="title_activity_maps">Map</string>
+    <string name="button_text">Place Marker</string>
+    <string name="action_settings">Settings</string>
+    <string name="marker_title">Marker</string>
+    <string name="pref_connectionType">Connection Type</string>
+    <string name="pref_connectionTypes_default">HTTP</string>
+    <string name="pref_serverHostAddress">Server Host Address</string>
+    <string name="pref_serverHostPort">Server Host Port</string>
+    <string name="pref_username">Username</string>
+    <string name="pref_password">Password</string>
+    <string name="pref_serverHostAddress_default">localhost</string>
+    <string name="pref_serverHostPort_default">8080</string>
+    <string name="pref_username_default">username</string>
+    <string name="pref_password_default">password</string>
+    <string name="pref_zoomLevel">Zoom Level </string>
+    <string name="pref_zoomLevel_default">16</string>
 </resources>

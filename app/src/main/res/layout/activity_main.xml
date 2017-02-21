@@ -4,4 +4,17 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <FrameLayout
+        android:id="@+id/mapscontainer"
+        android:layout_weight="5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/button_text" />
+
 </LinearLayout>

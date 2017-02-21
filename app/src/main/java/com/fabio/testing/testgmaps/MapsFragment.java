@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,16 +28,39 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
+
+    private static final String TAG = MapsFragment.class.getSimpleName();
+
     private Context mContext;
-    private SupportMapFragment supportMapFragment;
     private GoogleMap mMap;
     private LatLng latLng;
     private Marker currLocationMarker;
+    private int markerCount;
+    private OnLocationChangedListener onLocationChangedListener;
+    private static final float ZOOM_LEVEL = 17;
 
-    private static final float ZOOM_LEVEL = 22;
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnLocationChangedListener) {
+            onLocationChangedListener = (OnLocationChangedListener) context;
+        } else {
+            throw new ClassCastException(context.toString()
+                    + " must implemenet MapsFragment.OnLocationChangedListener");
+        }
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        markerCount = 0;
+    }
 
     @Nullable
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_maps, container, false);
@@ -46,6 +70,55 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         return v;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i(TAG,"onActivityCreated");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i(TAG,"onStart");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i(TAG,"onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i(TAG,"onPause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i(TAG,"onStop");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i(TAG,"onDestroyView");
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG,"onDestroy");
+    }
+
+    @Override
+    public void onDetach() {
+        Log.i(TAG,"onDetach");
+        super.onDetach();
+        onLocationChangedListener = null;
+    }
 
     /**
      * Manipulates the map once available.
@@ -68,8 +141,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         else {
             mMap.setMyLocationEnabled(true);
             registerLocationListeners();
+            //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, ZOOM_LEVEL));
             //buildGoogleApiClient();
-
             //mGoogleApiClient.connect();
         }
     }
@@ -103,9 +176,30 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    public void placeMarker(){
+        markerCount++;
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title(getString(R.string.marker_title) + " " + markerCount);
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
+        currLocationMarker = mMap.addMarker(markerOptions);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, ZOOM_LEVEL));
+    }
+
+
+    public interface OnLocationChangedListener {
+        public void onLocationChanged(LatLng latLng);
+    }
+
     private class DeviceLocationListener implements LocationListener {
         @Override
         public void onLocationChanged(Location location) {
+            latLng = new LatLng(location.getLatitude(),location.getLongitude());
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, ZOOM_LEVEL));
+            if(onLocationChangedListener != null) {
+                onLocationChangedListener.onLocationChanged(latLng);
+            }
+            /*
             if(currLocationMarker != null){
                currLocationMarker.remove();
             }
@@ -116,6 +210,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
             currLocationMarker = mMap.addMarker(markerOptions);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, ZOOM_LEVEL));
+            */
         }
 
         @Override
